@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { colors } from "../constants/variables";
+import loader from "../assets/loader.svg";
 
 import PokemonItem from "./shared/PokemonItem";
 
@@ -10,6 +11,7 @@ const AllPokemons = ({
   onAddPokemon,
   onRemovePokemon,
   onLoadMore,
+  hasNext,
   error,
 }) => {
   const buttonAdd = { text: "Add to My Pokemons", action: onAddPokemon };
@@ -21,18 +23,22 @@ const AllPokemons = ({
   return (
     <Wrapper>
       {error && <div>{error}</div>}
-      {Object.keys(pokemons).length > 0 && !error
-        ? Object.entries(pokemons).map(([name, favorite]) => (
-            <PokemonItem
-              key={name}
-              name={name}
-              button={favorite ? buttonRemove : buttonAdd}
-            />
-          ))
-        : "Loading"}
-      <LoadMoreWrapper>
-        <LoadMoreButton onClick={onLoadMore}>Load more</LoadMoreButton>
-      </LoadMoreWrapper>
+      {Object.keys(pokemons).length > 0 && !error ? (
+        Object.entries(pokemons).map(([name, favorite]) => (
+          <PokemonItem
+            key={name}
+            name={name}
+            button={favorite ? buttonRemove : buttonAdd}
+          />
+        ))
+      ) : (
+        <img src={loader} alt="loader" />
+      )}
+      {hasNext && (
+        <LoadMoreWrapper>
+          <LoadMoreButton onClick={onLoadMore}>Load more</LoadMoreButton>
+        </LoadMoreWrapper>
+      )}
     </Wrapper>
   );
 };

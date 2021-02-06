@@ -8,7 +8,7 @@ const Navigation = () => (
   <Wrapper>
     <Title>Pokedex</Title>
     <Links>
-      <StyledLink to="/" exact={true} activeClassName="selected">
+      <StyledLink to="/" exact activeClassName="selected">
         All Pokemons
       </StyledLink>
       <StyledLink to="/my-pokemons" activeClassName="selected">

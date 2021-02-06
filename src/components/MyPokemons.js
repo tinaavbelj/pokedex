@@ -12,7 +12,7 @@ const MyPokemons = ({ myPokemons, onRemovePokemon }) => {
     <Wrapper>
       {myPokemons.size > 0 ? (
         <>
-          <Count>Total: {Array.from(myPokemons).length}</Count>
+          <div>Total: {Array.from(myPokemons).length}</div>
           {Array.from(myPokemons).map((name) => (
             <PokemonItem key={name} name={name} button={button} />
           ))}
@@ -35,8 +35,6 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
-const Count = styled.div``;
 
 const NoPokemonsWrapper = styled.div`
   text-align: center;

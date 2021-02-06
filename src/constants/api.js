@@ -1,2 +1,2 @@
 export const API_URL = "https://pokeapi.co/api/v2/pokemon";
-export const LIMIT = 25;
+export const LIMIT = 35;

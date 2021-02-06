@@ -15,6 +15,7 @@ const App = () => {
   const [myPokemons, setMyPokemons] = useState(new Set());
 
   const [offset, setOffset] = useState(0);
+  const [hasNext, setHasNext] = useState(true);
   const [error, setError] = useState("");
 
   const getPokemons = useCallback(async () => {
@@ -28,6 +29,7 @@ const App = () => {
         data[item.name] = false;
       }
       setPokemons((prevPokemons) => ({ ...prevPokemons, ...data }));
+      setHasNext(Boolean(response.data.next));
     } catch (error) {
       setError(error.response.data);
     }
@@ -88,6 +90,7 @@ const App = () => {
               onAddPokemon={handleAddPokemon}
               onRemovePokemon={handleRemovePokemon}
               onLoadMore={handleLoadMore}
+              hasNext={hasNext}
             />
           </Route>
         </Switch>
